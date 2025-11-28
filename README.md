@@ -1,3 +1,8 @@
+<!-- Banner Image -->
+<p align="center">
+  <img src="assets/banner.png" alt="SNAILDB Banner" style="width:100%;max-width:900px;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.12);">
+</p>
+
 # SNAILDB v2.0.0
 
 **AI-Optimized Custom Database Engine** - Built entirely in TypeScript for LLM and AI Models
