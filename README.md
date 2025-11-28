@@ -1,4 +1,4 @@
-# SNAILDB v2.0.0 🐌
+# SNAILDB v2.0.0
 
 **AI-Optimized Custom Database Engine** - Built entirely in TypeScript for LLM and AI Models
 
@@ -25,17 +25,17 @@
 
 **[Ecocee](https://ecocee.in)** is a next-generation AI and Embedded Systems engineering company specializing in:
 
-- 🤖 **Artificial Intelligence Frameworks** - Advanced ML models and algorithms
-- 📱 **Embedded Firmware** - Real-time embedded systems
-- 🌐 **IoT Architectures** - Connected device ecosystems
-- ⚙️ **Automation Platforms** - Intelligent process automation
-- 🔐 **Secure Digital Technologies** - Enterprise security solutions
+- **Artificial Intelligence Frameworks** - Advanced ML models and algorithms
+- **Embedded Firmware** - Real-time embedded systems
+- **IoT Architectures** - Connected device ecosystems
+- **Automation Platforms** - Intelligent process automation
+- **Secure Digital Technologies** - Enterprise security solutions
 
 We blend research, innovation, and practical engineering to deliver **reliable, scalable, and future-ready solutions** for industrial, commercial, and modern enterprise applications.
 
 **SNAILDB** represents our commitment to providing production-grade, AI-first database technology that is open-source, self-hosted, and designed specifically for the LLM/AI revolution.
 
-### 🔗 Resources
+### Resources
 - **Website**: [ecocee.in](https://ecocee.in)
 - **GitHub**: [github.com/ecocee/snaildb](https://github.com/ecocee/snaildb)
 - **Email**: contact@ecocee.in
@@ -46,63 +46,63 @@ We blend research, innovation, and practical engineering to deliver **reliable, 
 
 SNAILDB is a **production-grade, self-hosted database** designed specifically for AI/LLM applications with:
 
-- 🚀 **High-Performance Vector Search** - HNSW indexing for semantic embeddings
-- 💾 **Built-in Persistence** - Write-Ahead Logs + RDB checkpoints  
-- 🔐 **Security First** - Authentication, encryption, rate limiting
-- ⚡ **Fast In-Memory Storage** - Optimized for latency-sensitive operations
-- 🧠 **AI-Ready** - Purpose-built for LLM embeddings and semantic search
-- 📊 **Full Monitoring** - Metrics, health checks, diagnostics
-- 🔄 **Replication Ready** - Master-slave architecture support
-- 🌍 **Self-Hosted** - Complete control, no vendor lock-in
-- 📦 **Docker Ready** - Kubernetes-compatible deployment
-- 🆓 **Open Source** - MIT license, community-driven
+- **High-Performance Vector Search** - HNSW indexing for semantic embeddings
+- **Built-in Persistence** - Write-Ahead Logs + RDB checkpoints  
+- **Security First** - Authentication, encryption, rate limiting
+- **Fast In-Memory Storage** - Optimized for latency-sensitive operations
+- **AI-Ready** - Purpose-built for LLM embeddings and semantic search
+- **Full Monitoring** - Metrics, health checks, diagnostics
+- **Replication Ready** - Master-slave architecture support
+- **Self-Hosted** - Complete control, no vendor lock-in
+- **Docker Ready** - Kubernetes-compatible deployment
+- **Open Source** - MIT license, community-driven
 
 ---
 
 ## Key Features
 
-### 🔍 Vector Search & Semantic Retrieval
+### Vector Search & Semantic Retrieval
 - **HNSW Algorithm** - Hierarchical Navigable Small World indexing
 - **384-dimensional support** - Optimized for modern LLM embeddings
 - **Multiple distance metrics** - Cosine, Euclidean, Dot Product
 - **Real-time indexing** - Add vectors without rebuilding
 - **Batch operations** - Efficient bulk inserts and searches
 
-### 💾 Data Persistence & Recovery
+### Data Persistence & Recovery
 - **Write-Ahead Logs (WAL)** - Crash-safe operations
 - **RDB Snapshots** - Periodic checkpoints with compression
 - **Automatic recovery** - Replay logs on restart
 - **Configurable intervals** - Tune performance vs durability
 
-### 🔐 Enterprise Security
+### Enterprise Security
 - **Optional authentication** - Server password protection
 - **Network isolation** - Self-hosted, no external dependencies
 - **Rate limiting** - Prevent abuse and DoS attacks
 - **Input validation** - Secure command processing
 - **Audit logging** - Track all operations
 
-### ⚡ Performance & Scalability
+### Performance & Scalability
 - **40,000+ SET ops/sec** - High-throughput writes
 - **60,000+ GET ops/sec** - Sub-millisecond reads
 - **10,000+ vector queries/sec** - Fast semantic search
 - **LRU/LFU eviction** - Efficient memory management
 - **Configurable memory limits** - 512MB to multi-GB support
 
-### 🧠 AI-First Design
+### AI-First Design
 - **LLM-optimized** - Purpose-built for language models
 - **Context storage** - Persist conversation state
 - **Semantic caching** - Cache embeddings and results
 - **Session management** - Track user interactions
 - **Prompt optimization** - Store and retrieve prompt templates
 
-### 📊 Observability & Monitoring
+### Observability & Monitoring
 - **Real-time metrics** - Connections, commands, errors
 - **Health checks** - Verify server status
 - **Structured logging** - Debug and audit trails
 - **Performance stats** - Cache hits/misses, memory usage
 - **Prometheus-compatible** - Integration with monitoring stacks
 
-### 🌍 Self-Hosted & Private
+### Self-Hosted & Private
 - **No cloud vendor** - Complete data control
 - **On-premises deployment** - Full compliance support
 - **Network-isolated** - Air-gapped environments supported
@@ -114,33 +114,33 @@ SNAILDB is a **production-grade, self-hosted database** designed specifically fo
 ## Why SNAILDB?
 
 ### vs Redis
-- ✅ Vector search built-in (Redis: add-on module)
-- ✅ AI/LLM optimized design
-- ✅ Smaller resource footprint
-- ✅ Simpler deployment (no Lua scripting required)
-- ✅ Perfect for semantic search workloads
+- Vector search built-in (Redis: add-on module)
+- AI/LLM optimized design
+- Smaller resource footprint
+- Simpler deployment (no Lua scripting required)
+- Perfect for semantic search workloads
 
 ### vs Milvus
-- ✅ Simpler deployment (no Java/Python dependencies)
-- ✅ All-in-one solution (no micro-services complexity)
-- ✅ Lower latency for smaller datasets
-- ✅ Faster iteration for prototyping
-- ✅ Self-hosted, TypeScript native
+- Simpler deployment (no Java/Python dependencies)
+- All-in-one solution (no micro-services complexity)
+- Lower latency for smaller datasets
+- Faster iteration for prototyping
+- Self-hosted, TypeScript native
 
 ### vs Pinecone/Weaviate (Cloud)
-- ✅ No subscription costs
-- ✅ Complete data privacy
-- ✅ Zero vendor lock-in
-- ✅ Full customization control
-- ✅ On-premises deployment
-- ✅ Open source transparency
+- No subscription costs
+- Complete data privacy
+- Zero vendor lock-in
+- Full customization control
+- On-premises deployment
+- Open source transparency
 
 ### For AI/LLM Applications
-- ✅ Semantic search out-of-the-box
-- ✅ LLM context caching
-- ✅ Embedding storage optimized
-- ✅ Session management built-in
-- ✅ RAG pipeline ready
+- Semantic search out-of-the-box
+- LLM context caching
+- Embedding storage optimized
+- Session management built-in
+- RAG pipeline ready
 
 ---
 
@@ -197,7 +197,7 @@ async function main() {
   try {
     // Connect
     await client.connect();
-    console.log('✅ Connected to SNAILDB');
+    console.log('Connected to SNAILDB');
 
     // Store data
     await client.set('user:1', { 
@@ -222,7 +222,7 @@ async function main() {
     // Disconnect
     await client.disconnect();
   } catch (error) {
-    console.error('❌ Error:', error);
+    console.error('Error:', error);
   }
 }
 
@@ -249,11 +249,11 @@ npm run test:simple  # Simple integration test
 For detailed installation instructions including Docker, Kubernetes, and cloud deployment, see **[INSTALLATION.md](./INSTALLATION.md)**
 
 Key methods:
-- ✅ From source (development)
-- ✅ npm package (when published)
-- ✅ Docker (recommended for production)
-- ✅ Kubernetes (enterprise deployments)
-- ✅ Bare metal / VM (on-premises)
+- From source (development)
+- npm package (when published)
+- Docker (recommended for production)
+- Kubernetes (enterprise deployments)
+- Bare metal / VM (on-premises)
 
 ---
 
@@ -303,15 +303,15 @@ For more examples, see **[EXAMPLES.md](./EXAMPLES.md)**
 
 ### Security Checklist
 
-- ✅ **Authentication** - Optional password protection
-- ✅ **Encryption** - TLS ready (with reverse proxy)
-- ✅ **Rate limiting** - Configurable per user/endpoint
-- ✅ **Input validation** - All commands sanitized
-- ✅ **Error handling** - Comprehensive error classes
-- ✅ **Audit logging** - All operations logged
-- ✅ **Recovery** - WAL-based crash recovery
-- ✅ **Testing** - 14 comprehensive Jest tests
-- ✅ **Monitoring** - Real-time metrics export
+- **Authentication** - Optional password protection
+- **Encryption** - TLS ready (with reverse proxy)
+- **Rate limiting** - Configurable per user/endpoint
+- **Input validation** - All commands sanitized
+- **Error handling** - Comprehensive error classes
+- **Audit logging** - All operations logged
+- **Recovery** - WAL-based crash recovery
+- **Testing** - 14 comprehensive Jest tests
+- **Monitoring** - Real-time metrics export
 
 ### Performance Metrics
 
@@ -355,24 +355,24 @@ For more examples, see **[EXAMPLES.md](./EXAMPLES.md)**
 ### Ecocee Support
 
 For enterprise support, training, and custom development:
-- 🌐 **Website**: [ecocee.in](https://ecocee.in)
-- 📧 **Email**: contact@ecocee.in
-- 💼 **LinkedIn**: [Ecocee](https://linkedin.com/company/ecocee)
+- **Website**: [ecocee.in](https://ecocee.in)
+- **Email**: contact@ecocee.in
+- **LinkedIn**: [Ecocee](https://linkedin.com/company/ecocee)
 
 ### Open Source Community
 
-- ⭐ **Star** the [GitHub repo](https://github.com/ecocee/snaildb)
-- 🔗 **Fork** for development
-- 📝 **Contribute** - See [CONTRIBUTING.md](CONTRIBUTING.md)
-- 💡 **Suggest features** - Open discussions
-- 🐛 **Report bugs** - [GitHub Issues](https://github.com/ecocee/snaildb/issues)
+- **Star** the [GitHub repo](https://github.com/ecocee/snaildb)
+- **Fork** for development
+- **Contribute** - See [CONTRIBUTING.md](CONTRIBUTING.md)
+- **Suggest features** - Open discussions
+- **Report bugs** - [GitHub Issues](https://github.com/ecocee/snaildb/issues)
 
 ### Getting Help
 
-- 📖 **Docs** - [Full documentation](./docs/)
-- 💬 **Discussions** - [GitHub Discussions](https://github.com/ecocee/snaildb/discussions)
-- 🐛 **Issues** - [Report bugs](https://github.com/ecocee/snaildb/issues)
-- 📧 **Email** - contact@ecocee.in
+- **Docs** - [Full documentation](./docs/)
+- **Discussions** - [GitHub Discussions](https://github.com/ecocee/snaildb/discussions)
+- **Issues** - [Report bugs](https://github.com/ecocee/snaildb/issues)
+- **Email** - contact@ecocee.in
 
 ---
 
@@ -397,19 +397,19 @@ Copyright (c) 2025 Ecocee
 ## Roadmap
 
 ### v2.1 (Q1 2025)
-- [ ] Redis-compatible protocol mode
-- [ ] GraphQL API
-- [ ] Enhanced replication
+- Redis-compatible protocol mode
+- GraphQL API
+- Enhanced replication
 
 ### v2.2 (Q2 2025)
-- [ ] Distributed SQL queries
-- [ ] GPU acceleration for vector search
-- [ ] Time-series optimizations
+- Distributed SQL queries
+- GPU acceleration for vector search
+- Time-series optimizations
 
 ### v3.0 (Q3 2025)
-- [ ] Kafka stream integration
-- [ ] Machine learning model serving
-- [ ] Distributed clustering
+- Kafka stream integration
+- Machine learning model serving
+- Distributed clustering
 
 ---
 
@@ -430,13 +430,13 @@ Copyright (c) 2025 Ecocee
 ```
                       SNAILDB  Redis  Milvus  Pinecone
 ─────────────────────────────────────────────────────
-Vector Search           ✅      ❌     ✅      ✅
-Self-Hosted            ✅      ✅     ✅      ❌
-Simple Deploy          ✅      ✅     ❌      N/A
-TypeScript Native      ✅      ❌     ❌      ❌
-No External Deps       ✅      ✅     ❌      N/A
-Open Source            ✅      ✅     ✅      ❌
-AI/LLM Optimized       ✅      ❌     ✅      ✅
+Vector Search           Yes      No     Yes     Yes
+Self-Hosted            Yes     Yes     Yes      No
+Simple Deploy          Yes     Yes      No     N/A
+TypeScript Native      Yes      No      No      No
+No External Deps       Yes     Yes      No     N/A
+Open Source            Yes     Yes     Yes      No
+AI/LLM Optimized       Yes      No     Yes     Yes
 ─────────────────────────────────────────────────────
 ```
 
@@ -453,15 +453,15 @@ AI/LLM Optimized       ✅      ❌     ✅      ✅
 ## Contact
 
 - **Website** - [ecocee.in](https://ecocee.in)
-- **Email** - contact@ecocee.in
+- **Email** - info@ecocee.in
 - **GitHub** - [@ecocee](https://github.com/ecocee)
 - **LinkedIn** - [Ecocee](https://linkedin.com/company/ecocee)
 
 ---
 
-**Built with ❤️ for AI/LLM applications by Ecocee**
+**Built for AI/LLM applications by Ecocee**
 
-Made in 🇮🇳 | Open Source | Production Ready | Self-Hosted
+Open Source | Production Ready | Self-Hosted
 
 Version 2.0.0 | TypeScript | Node.js 18+ | MIT License
 
