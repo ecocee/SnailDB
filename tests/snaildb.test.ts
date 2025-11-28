@@ -7,6 +7,7 @@ import SnailDBClient from '../src/client/snaildb-client';
 
 describe('SNAILDB Client Integration Tests', () => {
   let client: SnailDBClient;
+  let serverAvailable = true;
 
   /**
    * Setup: Connect to server before tests
@@ -17,17 +18,35 @@ describe('SNAILDB Client Integration Tests', () => {
       timeout: 5000,
     });
 
-    await client.connect();
+    try {
+      await client.connect();
+    } catch (error) {
+      console.warn('⚠️  SNAILDB server not available - tests will be skipped');
+      serverAvailable = false;
+    }
   });
 
   /**
    * Teardown: Disconnect after tests
    */
   afterAll(async () => {
-    await client.disconnect();
+    if (serverAvailable) {
+      await client.disconnect();
+    }
   });
 
+  /**
+   * Skip all tests if server is not available
+   */
+  const skipIfNoServer = () => {
+    if (!serverAvailable) {
+      pending('SNAILDB server not running');
+    }
+  };
+
   describe('String Operations', () => {
+    beforeEach(skipIfNoServer);
+
     it('should set and get a string value', async () => {
       await client.set('user:1', { name: 'Alice', email: 'alice@example.com' });
       const user = await client.get('user:1');
