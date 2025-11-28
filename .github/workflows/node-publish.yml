@@ -1,0 +1,45 @@
+# This workflow will build and test the TypeScript/Node.js project when a release is created
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: snailDB - Build & Test
+
+on:
+  push:
+    branches: [ main, ts-engine ]
+  pull_request:
+    branches: [ main, ts-engine ]
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Build TypeScript
+      run: npm run build
+    
+    - name: Run tests
+      run: npm test
+    
+    - name: Run examples
+      run: npm run examples
+      continue-on-error: true
