@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  snaildb:
+    build: .
+    ports:
+      - "12222:12222"
+    environment:
+      NODE_ENV: production
+      SNAILDB_HOST: 0.0.0.0
+      SNAILDB_PORT: 12222
+      SNAILDB_DATA_DIR: /data
+      SNAILDB_MAX_MEMORY: 536870912
+      SNAILDB_ENABLE_VECTORS: "true"
+      SNAILDB_VECTOR_DIMENSION: 384
+    volumes:
+      - snaildb-data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('net').connect({host: 'localhost', port: 12222}, () => process.exit(0))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+
+volumes:
+  snaildb-data:
+    driver: local

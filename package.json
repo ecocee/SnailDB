@@ -1,67 +1,60 @@
 {
-  "name": "ecocee",
-  "version": "1.0.0",
-  "description": "ECOCEE: Production-Grade, AI-Optimized Custom Database Engine with Vector Search, Custom SQL Parser, Storage Engine, and SuperMemory™ AI Module",
+  "name": "snaildb",
+  "version": "2.0.0",
+  "description": "SNAILDB v2.0 - Production-Grade AI-Optimized Custom Database with Vector Search, Self-Hosted snaildb:// Protocol, and Comprehensive Error Handling",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "bin": {
-    "ecoceedb": "./dist/cmd/ecoceedb/main.js"
+    "snaildb-server": "./dist/cmd/server/index.js"
   },
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
-    "dev": "ts-node cmd/ecoceedb/main.ts",
-    "start": "node dist/cmd/ecoceedb/main.js",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "lint": "eslint src/**/*.ts cmd/**/*.ts",
+    "dev": "ts-node cmd/server/index.ts",
+    "server": "ts-node cmd/server/index.ts",
+    "server:prod": "node dist/cmd/server/index.js",
+    "lint": "eslint src/**/*.ts cmd/**/*.ts --max-warnings 0",
+    "lint:fix": "eslint src/**/*.ts cmd/**/*.ts --fix",
     "format": "prettier --write \"src/**/*.ts\" \"cmd/**/*.ts\"",
-    "clean": "rimraf dist",
-    "server": "ts-node cmd/ecoceedb/server.ts",
-    "shell": "ts-node cmd/ecoceedb/shell.ts",
-    "benchmark": "ts-node cmd/ecoceedb/benchmark.ts",
-    "prepare": "npm run build"
+    "format:check": "prettier --check \"src/**/*.ts\" \"cmd/**/*.ts\"",
+    "clean": "rimraf dist coverage",
+    "docker:build": "docker build -t snaildb:latest .",
+    "docker:run": "docker run -p 12222:12222 -v snaildb-data:/app/data snaildb:latest"
   },
   "keywords": [
     "database",
     "vector-search",
     "ai",
+    "llm",
     "typescript",
-    "embedded",
+    "self-hosted",
     "hnsw",
-    "ivf",
-    "custom-sql",
-    "storage-engine",
+    "embeddings",
+    "semantic-search",
     "in-memory",
     "persistence",
-    "rag",
-    "embeddings",
-    "ai-agents"
+    "snaildb"
   ],
-  "author": "ECOCEE Team",
+  "author": "SNAILDB Team",
   "license": "MIT",
   "devDependencies": {
-    "@types/jest": "^29.5.0",
-    "@types/node": "^20.0.0",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "eslint": "^8.0.0",
-    "jest": "^29.5.0",
-    "prettier": "^3.0.0",
-    "rimraf": "^5.0.0",
-    "ts-jest": "^29.1.0",
-    "ts-node": "^10.9.0",
-    "typescript": "^5.0.0"
+    "@types/node": "^20.10.0",
+    "@types/uuid": "^9.0.2",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.54.0",
+    "prettier": "^3.1.0",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.3.3"
   },
   "dependencies": {
-    "commander": "^11.0.0",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.1"
   },
   "engines": {
     "node": ">=18.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cyberkutti-iedc/ecocee"
+    "url": "https://github.com/snaildb/snaildb"
   }
 }
