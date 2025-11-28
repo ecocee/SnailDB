@@ -1,167 +1,97 @@
-Certainly! Below is an enhanced version of your README.md for SnailDB:
+# SNAILDB Documentation
 
-```markdown
-# SnailDB
+Welcome to the complete SNAILDB documentation. This directory contains comprehensive guides, API references, architecture documentation, and deployment instructions.
 
-SnailDB is a lightweight, non-SQL database for Python, designed for simplicity and ease of use.
+## 📚 Documentation Structure
 
-## Table of Contents
+### 🚀 Getting Started
+- **[Quick Start](./guides/QUICKSTART.md)** - 5-minute setup and first commands
+- **[Installation Guide](./guides/INSTALLATION.md)** - Detailed installation for all platforms
+- **[Features Overview](./guides/FEATURES.md)** - Complete feature list and capabilities
 
-- [Installation](#installation)
-- [Version](#version)
-- [Quick Start](#quick-start)
-- [Examples](#examples)
-- [Delete](#delete)
-- [Query](#query)
-- [Features](#features)
-- [Contributing](#contributing)
-- [License](#license)
+### 💡 Usage & Examples
+- **[Examples](./guides/EXAMPLES.md)** - Real-world usage examples and code samples
+- **[API Reference](./api/REFERENCE.md)** - Complete API documentation with all methods
 
-## Installation
+### 🏗️ Architecture & Design
+- **[Architecture Overview](./architecture/OVERVIEW.md)** - System design and components
+- **[Protocol Specification](./api/REFERENCE.md)** - SNAILDB protocol details
 
-```bash
-pip install snailDB
+### 🚢 Deployment & Operations
+- **[Production Deployment](./deployment/PRODUCTION.md)** - Docker, Kubernetes, cloud deployment
+- **[Security Guide](./deployment/SECURITY.md)** - Security best practices and configurations
+- **[Production Checklist](./deployment/CHECKLIST.md)** - Pre-launch verification checklist
+
+### 📝 Development
+- **[Contributing Guide](./CONTRIBUTING.md)** - How to contribute to SNAILDB
+- **[Project Status](./PROJECT_STATUS.md)** - Current development status and roadmap
+
+## 🎯 Quick Links by Use Case
+
+### For First-Time Users
+1. Read [Quick Start](./guides/QUICKSTART.md)
+2. Review [Features Overview](./guides/FEATURES.md)
+3. Try [Examples](./guides/EXAMPLES.md)
+
+### For Developers
+1. Check [API Reference](./api/REFERENCE.md)
+2. Review [Examples](./guides/EXAMPLES.md)
+3. Read [Architecture Overview](./architecture/OVERVIEW.md)
+4. See [Contributing Guide](./CONTRIBUTING.md)
+
+### For DevOps/SRE
+1. Read [Installation Guide](./guides/INSTALLATION.md)
+2. Review [Production Deployment](./deployment/PRODUCTION.md)
+3. Check [Security Guide](./deployment/SECURITY.md)
+4. Use [Production Checklist](./deployment/CHECKLIST.md)
+
+### For Security Teams
+1. Review [Security Guide](./deployment/SECURITY.md)
+2. Check [Production Deployment](./deployment/PRODUCTION.md)
+3. Read [Architecture Overview](./architecture/OVERVIEW.md)
+
+## 📋 Documentation Map
+
+```
+docs/
+├── README.md                    ← You are here
+├── guides/
+│   ├── QUICKSTART.md           ← Start here!
+│   ├── INSTALLATION.md         ← Multi-platform setup
+│   ├── FEATURES.md             ← Complete feature list
+│   └── EXAMPLES.md             ← Code samples
+├── api/
+│   └── REFERENCE.md            ← API documentation
+├── architecture/
+│   └── OVERVIEW.md             ← System design
+├── deployment/
+│   ├── PRODUCTION.md           ← Deployment guide
+│   ├── SECURITY.md             ← Security practices
+│   └── CHECKLIST.md            ← Launch checklist
+├── CONTRIBUTING.md             ← Contribution guide
+├── PROJECT_STATUS.md           ← Development status
+└── INDEX.md                    ← Full index (legacy)
 ```
 
-## Version
+## 🔗 External Links
 
-```python
-from snaildb import version
+- **Website**: https://ecocee.in
+- **GitHub Repository**: https://github.com/ecocee/snaildb
+- **GitHub Issues**: https://github.com/ecocee/snaildb/issues
+- **GitHub Discussions**: https://github.com/ecocee/snaildb/discussions
 
-# To check which version of SnailDB is installed
-print(version())
-```
+## 📞 Support
 
-## Quick Start
+- **GitHub Issues**: Report bugs or request features
+- **GitHub Discussions**: Ask questions and share ideas
+- **Security Issues**: Please follow the Security Guide for responsible disclosure
 
-```python
-from snaildb import SnailDB
+## 📄 License
 
-# Create a SnailDB instance
-db = SnailDB("database.json", "data")
+SNAILDB is licensed under the MIT License. See the LICENSE file in the root directory for details.
 
-# Get the name of the database
-print("Using database:", db.get_db_name())
+---
 
-# Insert data
-db.insert({"key": "1", "name": "John", "age": 30})
-db.insert({"key": "2", "name": "Alice", "age": 25})
-
-# Get data
-print("Key '1' data:", db.get("1"))
-```
-
-## Examples
-
-```python
-# Setup the database on db
-db = SnailDB("my_database.json", "data")
-
-# Example 1: Insert a document using insert() function
-db.insert({"key": "1", "name": "Akhil", "age": 20})
-
-# Example 2: Insert multiple documents using insert_all() function
-db.insert_all({"key": "3", "name": "Jon", "age": 10}, {"key": "4", "name": "Ali", "age": 21})
-```
-
-```python
-# Example 3: Update the database
-# For updating the database, use the key value.
-db.update("1", {"name": "John", "age": 31})
-
-# Example 4: View the database
-# Print data without pretty formatting:
-print(db.get("1"))
-
-# Print data with pretty formatting:
-print(db.get("1", pretty=True))
-```
-
-```python
-# Example 5: View all the database
-# Print all data without pretty formatting:
-print(db.get_all())
-
-# Print all data with pretty formatting:
-print(db.get_all(pretty=True))
-```
-
-## Delete
-
-```python
-# Example 6: Delete data
-# For deleting data, enter the key
-db.delete("2")
-
-# Example 7: Delete the entire database
-# The db database will be deleted
-db.drop()
-```
-
-## Query
-
-```python
-# Query Function without pretty formatting
-test = db.query("age", "<", 30)
-print(test)
-
-# Query Function with pretty formatting
-test = db.query("age", "<", 30, pretty=True)
-print(test)
-
-# We can use all operators
-
-#Greater Operator
-
-test = db.query("age", ">", 30, pretty=True)
-print(test)
-
-#Lesser Operator
-test = db.query("age", "<", 30, pretty=True)
-print(test)
-
-#Equal to operator
-test = db.query("name", "=", "Ali", pretty=True)
-print(test)
-
-# Lesser and Equal to operator
-test = db.query("age", "<=", 29, pretty=True)
-print(test)
-
-# Greater and Equal to operator
-test = db.query("age", ">=", 29, pretty=True)
-print(test)
-
-# Not Equal to operator
-test = db.query("age", "!=", 29, pretty=True)
-print(test)
-
-# Query Method with Skip Method
-test = db.query("age", "<", 30, skip=1, pretty=True)
-print(test)
-
-# Query Method with Limt method
-test = db.query("age", "<", 30, limt=1, pretty=True)
-print(test)
-
-# Query Method with Limt method and skip method
-test = db.query("age", "<", 30, skip=1, limt=1, pretty=True)
-print(test)
-```
-
-## Features
-
-- **Lightweight:** SnailDB is designed to be a lightweight database, providing basic functionalities without unnecessary complexities.
-- **Simple API:** The API is easy to use, making it suitable for small to medium-sized projects.
-- **Persistent Storage:** Data is stored in a JSON file, ensuring persistence across sessions.
-- **Basic CRUD Operations:** SnailDB supports basic Create, Read, Update, and Delete operations.
-- **Query Functionality:** Perform simple queries based on field name, operator, and target value.
-
-## Contributing
-
-Contributions are welcome! If you'd like to contribute to SnailDB, please check the [Contributing Guide](CONTRIBUTING.md).
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-```
+**Last Updated**: November 28, 2025
+**Version**: 2.0.0
+**Status**: Production Ready ✅

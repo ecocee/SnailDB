@@ -1,0 +1,68 @@
+{
+  "name": "snaildb",
+  "version": "2.0.0",
+  "description": "SNAILDB v2.0 - Production-Grade AI-Optimized Custom Database with Vector Search, Self-Hosted snaildb:// Protocol, and Comprehensive Error Handling",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "bin": {
+    "snaildb-server": "./dist/cmd/server/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "dev": "ts-node cmd/server/index.ts",
+    "start": "node dist/cmd/server/index.js",
+    "server": "node dist/cmd/server/index.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:simple": "npx ts-node test.ts",
+    "examples": "ts-node examples/test-all.ts",
+    "lint": "eslint src/**/*.ts cmd/**/*.ts --max-warnings 0",
+    "lint:fix": "eslint src/**/*.ts cmd/**/*.ts --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"cmd/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"cmd/**/*.ts\"",
+    "clean": "rimraf dist coverage",
+    "docker:build": "docker build -t snaildb:latest .",
+    "docker:run": "docker run -p 12222:12222 -v snaildb-data:/app/data snaildb:latest"
+  },
+  "keywords": [
+    "database",
+    "vector-search",
+    "ai",
+    "llm",
+    "typescript",
+    "self-hosted",
+    "hnsw",
+    "embeddings",
+    "semantic-search",
+    "in-memory",
+    "persistence",
+    "snaildb"
+  ],
+  "author": "SNAILDB Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^20.10.0",
+    "@types/uuid": "^9.0.2",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.54.0",
+    "jest": "^30.2.0",
+    "prettier": "^3.1.0",
+    "rimraf": "^5.0.5",
+    "ts-jest": "^29.4.5",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "uuid": "^9.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/snaildb/snaildb"
+  }
+}
