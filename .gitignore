@@ -9,6 +9,10 @@ dist/
 build/
 *.tsbuildinfo
 
+#Database files
+data/
+
+
 # Test coverage
 coverage/
 .nyc_output/
