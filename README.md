@@ -2,481 +2,467 @@
 
 **AI-Optimized Custom Database Engine** - Built entirely in TypeScript for LLM and AI Models
 
+> Developed by [Ecocee](https://ecocee.in) - Next-Generation AI & Embedded Systems Engineering
+
+---
+
+## Table of Contents
+
+- [About Ecocee](#about-ecocee)
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [Why SNAILDB?](#why-snaildb)
+- [Quick Start](#quick-start)
+- [Installation](#installation)
+- [Real-World Use Cases](#real-world-use-cases)
+- [Production Ready](#production-ready)
+- [Documentation](#documentation)
+- [Support & Community](#support--community)
+
+---
+
+## About Ecocee
+
+**[Ecocee](https://ecocee.in)** is a next-generation AI and Embedded Systems engineering company specializing in:
+
+- 🤖 **Artificial Intelligence Frameworks** - Advanced ML models and algorithms
+- 📱 **Embedded Firmware** - Real-time embedded systems
+- 🌐 **IoT Architectures** - Connected device ecosystems
+- ⚙️ **Automation Platforms** - Intelligent process automation
+- 🔐 **Secure Digital Technologies** - Enterprise security solutions
+
+We blend research, innovation, and practical engineering to deliver **reliable, scalable, and future-ready solutions** for industrial, commercial, and modern enterprise applications.
+
+**SNAILDB** represents our commitment to providing production-grade, AI-first database technology that is open-source, self-hosted, and designed specifically for the LLM/AI revolution.
+
+### 🔗 Resources
+- **Website**: [ecocee.in](https://ecocee.in)
+- **GitHub**: [github.com/ecocee/snaildb](https://github.com/ecocee/snaildb)
+- **Email**: contact@ecocee.in
+
+---
+
 ## Overview
 
-SNAILDB is a **production-grade, self-hosted database** designed specifically for AI/LLM applications. It uses the proprietary `snaildb://` protocol and provides:
+SNAILDB is a **production-grade, self-hosted database** designed specifically for AI/LLM applications with:
 
-- 🚀 **High-Performance Vector Search** - HNSW indexing for AI embeddings
-- 💾 **Built-in Persistence** - Write-Ahead Logs + RDB checkpoints
+- 🚀 **High-Performance Vector Search** - HNSW indexing for semantic embeddings
+- 💾 **Built-in Persistence** - Write-Ahead Logs + RDB checkpoints  
 - 🔐 **Security First** - Authentication, encryption, rate limiting
 - ⚡ **Fast In-Memory Storage** - Optimized for latency-sensitive operations
 - 🧠 **AI-Ready** - Purpose-built for LLM embeddings and semantic search
 - 📊 **Full Monitoring** - Metrics, health checks, diagnostics
 - 🔄 **Replication Ready** - Master-slave architecture support
+- 🌍 **Self-Hosted** - Complete control, no vendor lock-in
+- 📦 **Docker Ready** - Kubernetes-compatible deployment
+- 🆓 **Open Source** - MIT license, community-driven
+
+---
+
+## Key Features
+
+### 🔍 Vector Search & Semantic Retrieval
+- **HNSW Algorithm** - Hierarchical Navigable Small World indexing
+- **384-dimensional support** - Optimized for modern LLM embeddings
+- **Multiple distance metrics** - Cosine, Euclidean, Dot Product
+- **Real-time indexing** - Add vectors without rebuilding
+- **Batch operations** - Efficient bulk inserts and searches
+
+### 💾 Data Persistence & Recovery
+- **Write-Ahead Logs (WAL)** - Crash-safe operations
+- **RDB Snapshots** - Periodic checkpoints with compression
+- **Automatic recovery** - Replay logs on restart
+- **Configurable intervals** - Tune performance vs durability
+
+### 🔐 Enterprise Security
+- **Optional authentication** - Server password protection
+- **Network isolation** - Self-hosted, no external dependencies
+- **Rate limiting** - Prevent abuse and DoS attacks
+- **Input validation** - Secure command processing
+- **Audit logging** - Track all operations
+
+### ⚡ Performance & Scalability
+- **40,000+ SET ops/sec** - High-throughput writes
+- **60,000+ GET ops/sec** - Sub-millisecond reads
+- **10,000+ vector queries/sec** - Fast semantic search
+- **LRU/LFU eviction** - Efficient memory management
+- **Configurable memory limits** - 512MB to multi-GB support
+
+### 🧠 AI-First Design
+- **LLM-optimized** - Purpose-built for language models
+- **Context storage** - Persist conversation state
+- **Semantic caching** - Cache embeddings and results
+- **Session management** - Track user interactions
+- **Prompt optimization** - Store and retrieve prompt templates
+
+### 📊 Observability & Monitoring
+- **Real-time metrics** - Connections, commands, errors
+- **Health checks** - Verify server status
+- **Structured logging** - Debug and audit trails
+- **Performance stats** - Cache hits/misses, memory usage
+- **Prometheus-compatible** - Integration with monitoring stacks
+
+### 🌍 Self-Hosted & Private
+- **No cloud vendor** - Complete data control
+- **On-premises deployment** - Full compliance support
+- **Network-isolated** - Air-gapped environments supported
+- **Open source** - Full transparency and auditability
+- **Customizable** - Extend for specific needs
+
+---
+
+## Why SNAILDB?
+
+### vs Redis
+- ✅ Vector search built-in (Redis: add-on module)
+- ✅ AI/LLM optimized design
+- ✅ Smaller resource footprint
+- ✅ Simpler deployment (no Lua scripting required)
+- ✅ Perfect for semantic search workloads
+
+### vs Milvus
+- ✅ Simpler deployment (no Java/Python dependencies)
+- ✅ All-in-one solution (no micro-services complexity)
+- ✅ Lower latency for smaller datasets
+- ✅ Faster iteration for prototyping
+- ✅ Self-hosted, TypeScript native
+
+### vs Pinecone/Weaviate (Cloud)
+- ✅ No subscription costs
+- ✅ Complete data privacy
+- ✅ Zero vendor lock-in
+- ✅ Full customization control
+- ✅ On-premises deployment
+- ✅ Open source transparency
+
+### For AI/LLM Applications
+- ✅ Semantic search out-of-the-box
+- ✅ LLM context caching
+- ✅ Embedding storage optimized
+- ✅ Session management built-in
+- ✅ RAG pipeline ready
+
+---
 
 ## Quick Start
 
-### Installation
+### 1. Installation
 
 ```bash
-npm install @snaildb/core
+# Clone repository
+git clone https://github.com/ecocee/snaildb.git
+cd snaildb
+
+# Install dependencies
+npm install
+
+# Build TypeScript
+npm run build
+
+# Start development server
+npm run dev
+
+# Server available at: snaildb://localhost:12222
 ```
 
-### Start Server
+### 2. Start Server
 
 ```bash
-# Default (localhost:12222)
-npm run server
+# Development mode (with hot reload)
+npm run dev
 
-# Custom configuration
+# Production mode
+npm run build
+NODE_ENV=production npm run server:prod
+
+# With custom configuration
 npm run server -- --host 0.0.0.0 --port 9999 --password mypass
 
-# With vector search
-npm run server -- --vector-dim 768 --maxmemory 1073741824
-```
-
-### Connect from TypeScript
-
-```typescript
-import SnailDBClient from './src/client/snaildb-client';
-
-const client = new SnailDBClient({
-  uri: 'snaildb://localhost:12222',
-  timeout: 5000,
-});
-
-await client.connect();
-
-// String operations
-await client.set('user:1', { name: 'Alice', email: 'alice@example.com' });
-const user = await client.get('user:1');
-
-// Vector search (for AI embeddings)
-const embedding = [0.1, 0.2, 0.3, /* ... 765 more values ... */];
-await client.vectorSet('embedding:1', embedding, { model: 'gpt-3.5' });
-
-const results = await client.vectorSearch(embedding, 10);
-
-// List operations
-await client.rpush('messages:room1', 'Hello', 'How are you?');
-const recent = await client.lrange('messages:room1', 0, 10);
-
-// Hash operations
-await client.hset('session:abc', 'user_id', '1', 'token', 'xyz');
-const session = await client.hgetall('session:abc');
-
-// Server stats
-const stats = await client.stats();
-console.log(`Connections: ${stats.connections}, Commands: ${stats.commands}`);
-
-await client.disconnect();
-```
-
-## Connection String Format
-
-```
-snaildb://[username[:password]@]host:port[/database][?options]
-```
-
-### Examples
-
-```
-snaildb://localhost:12222                    # Default
-snaildb://admin:pass@server.com:9999         # With auth
-snaildb://localhost:12222/ai_cache           # With database
-snaildb://localhost:12222?timeout=10000      # With options
-```
-
-## Architecture
-
-### Protocol Layer
-- **SNAILDB Binary Protocol** - Efficient binary message format (4-byte length + JSON payload)
-- **Message Types**: `connect`, `auth`, `command`, `query`, `ping`
-- **Streaming**: Full duplex TCP with incremental message parsing
-
-### Storage Engine
-- **In-Memory Data Store** - Fast access with LRU eviction policies
-- **Persistence**
-  - WAL (Write-Ahead Log) - Crash recovery
-  - RDB Snapshots - Periodic checkpoints with gzip compression
-- **Eviction Policies**: LRU, LFU, TTL, Random
-- **Type System**: String, List, Hash, Set, ZSet, Stream
-
-### Vector Indexing
-- **HNSW Algorithm** - Hierarchical Navigable Small World
-- **Distance Metrics**: Cosine, Euclidean, Dot Product
-- **Scalable** - Efficient for millions of embeddings
-- **Configurable** - Dimensions and search parameters
-
-### Replication & Clustering
-- **Master-Slave Architecture** - Built-in replication support
-- **Sentinel Mode** - Automatic failover
-- **Hot Standby** - Zero-copy replication
-
-## Commands
-
-### String Operations
-
-```typescript
-await client.set(key, value, ttl?)      // Set value
-await client.get(key)                   // Get value
-await client.del(...keys)               // Delete keys
-await client.exists(...keys)            // Check existence
-await client.type(key)                  // Get type
-```
-
-### List Operations
-
-```typescript
-await client.lpush(key, ...values)      // Push left
-await client.rpush(key, ...values)      // Push right
-await client.lpop(key)                  // Pop left
-await client.rpop(key)                  // Pop right
-await client.llen(key)                  // List length
-await client.lrange(key, start, end)    // Get range
-```
-
-### Hash Operations
-
-```typescript
-await client.hset(key, ...pairs)        // Set fields
-await client.hget(key, field)           // Get field
-await client.hgetall(key)               // Get all fields
-await client.hdel(key, ...fields)       // Delete fields
-await client.hexists(key, field)        // Check field
-```
-
-### Set Operations
-
-```typescript
-await client.sadd(key, ...members)      // Add members
-await client.srem(key, ...members)      // Remove members
-await client.smembers(key)              // Get all members
-await client.scard(key)                 // Set size
-```
-
-### Vector Operations
-
-```typescript
-// Insert vector with metadata
-await client.vectorSet('embedding:1', [0.1, 0.2, ...], {
-  model: 'sentence-transformers',
-  text: 'Hello world',
-});
-
-// Search for similar vectors (returns top-k results)
-const results = await client.vectorSearch([0.1, 0.2, ...], 10);
-// Results: [{ id, distance, metadata }, ...]
-```
-
-### Server Operations
-
-```typescript
-await client.info()                     // Server info
-await client.stats()                    // Server stats
-await client.save()                     // Force save
-await client.compact()                  // Compact storage
-```
-
-## Configuration
-
-### Server Config
-
-```typescript
-const config: SnailDBServerConfig = {
-  host: 'localhost',
-  port: 12222,
-  password: 'optional',
-  dataDir: './data',
-  maxConnections: 1000,
-  maxMemory: 512 * 1024 * 1024, // 512MB
-  enableVectorSearch: true,
-  vectorDimension: 384,
-  persistence: {
-    enabled: true,
-    interval: 30000, // 30 seconds
-  },
-  monitoring: {
-    enabled: true,
-    metricsInterval: 60000, // 60 seconds
-  },
-};
-```
-
-### Environment Variables
-
-```bash
-# Server configuration
-SNAILDB_HOST=localhost
-SNAILDB_PORT=12222
-SNAILDB_PASSWORD=mypass
-SNAILDB_DATA_DIR=./data
-SNAILDB_MAX_MEMORY=536870912
-
-# Vector search
-SNAILDB_ENABLE_VECTORS=true
-SNAILDB_VECTOR_DIMENSION=384
-
-# Persistence
-SNAILDB_PERSISTENCE_ENABLED=true
-SNAILDB_PERSISTENCE_INTERVAL=30000
-
-# Monitoring
-SNAILDB_MONITORING_ENABLED=true
-SNAILDB_METRICS_INTERVAL=60000
-```
-
-## Use Cases
-
-### LLM Memory & Context
-```typescript
-// Store conversation context
-await db.set(`context:${sessionId}`, {
-  messages: [...],
-  embedding: [...],
-  timestamp: Date.now(),
-});
-```
-
-### Semantic Search
-```typescript
-// Index documents with embeddings
-for (const doc of documents) {
-  const embedding = await model.embed(doc.text);
-  await db.vectorSet(`doc:${doc.id}`, embedding, { text: doc.text });
-}
-
-// Search
-const query = 'Find similar documents';
-const queryEmb = await model.embed(query);
-const similar = await db.vectorSearch(queryEmb, 10);
-```
-
-### Session Management
-```typescript
-await db.hset(`session:${id}`, 
-  'user_id', userId,
-  'token', token,
-  'created', Date.now()
-);
-```
-
-### Caching
-```typescript
-// Cache with TTL
-await db.set(`cache:${key}`, value, 3600); // 1 hour TTL
-```
-
-### Rate Limiting
-```typescript
-const key = `rate_limit:${userId}`;
-const count = await db.incr(key);
-if (count === 1) {
-  await db.expire(key, 60); // 60 second window
-}
-if (count > 100) {
-  throw new Error('Rate limit exceeded');
-}
-```
-
-## Performance
-
-### Benchmarks
-
-- **SET Operations**: 40,000+ ops/sec
-- **GET Operations**: 60,000+ ops/sec
-- **Vector Search (HNSW)**: 10,000+ queries/sec
-- **List Operations**: 50,000+ ops/sec
-- **Memory Efficiency**: ~1.2x overhead vs raw data
-
-### Optimization Tips
-
-1. **Use appropriate data types** - String for simple values, Hash for structured data
-2. **Set reasonable TTLs** - Automatic cleanup reduces memory pressure
-3. **Batch operations** - Use `batch()` for multiple commands
-4. **Monitor metrics** - Track cache hits/misses and memory usage
-5. **Configure eviction** - Choose policy based on access patterns
-
-## Persistence & Recovery
-
-### Snapshots (RDB)
-
-```typescript
-// Automatic (every 30 seconds by default)
-// Manual trigger
-await client.save();
-```
-
-### Write-Ahead Logs (WAL)
-
-- Every operation logged before execution
-- Automatic replay on startup
-- Compressed for storage efficiency
-
-### Recovery Process
-
-1. Load latest RDB snapshot
-2. Replay WAL logs since snapshot
-3. Verify checksums
-4. Ready for connections
-
-## Monitoring & Debugging
-
-### Metrics
-
-```typescript
-const metrics = await client.stats();
-// {
-//   connections: 5,
-//   commands: 10523,
-//   errors: 3,
-//   uptime: 3600,
-//   storage: { keys: 1000, memory: 5242880, ... }
-// }
-```
-
-### Health Checks
-
-```typescript
-// Check if server is healthy
-const info = await client.info();
-console.log(info.server);
-```
-
-### Logs
-
-Logs are written to `data/ecocee.log` with automatic rotation.
-
-## Error Handling
-
-```typescript
-try {
-  const result = await client.get('key');
-} catch (error) {
-  if (error.message.includes('AUTH_FAILED')) {
-    // Handle authentication error
-  } else if (error.message.includes('timeout')) {
-    // Handle timeout
-  } else {
-    // Handle other errors
-  }
-}
-```
-
-## Production Deployment
-
-### Docker
-
-```bash
+# Docker
 docker build -t snaildb:latest .
 docker run -p 12222:12222 -v snaildb-data:/app/data snaildb:latest
 ```
 
-### Environment Setup
+### 3. Connect from Application
+
+```typescript
+import SnailDBClient from './src/client/snaildb-client';
+
+async function main() {
+  const client = new SnailDBClient({
+    uri: 'snaildb://localhost:12222',
+    timeout: 5000,
+  });
+
+  try {
+    // Connect
+    await client.connect();
+    console.log('✅ Connected to SNAILDB');
+
+    // Store data
+    await client.set('user:1', { 
+      name: 'Alice',
+      email: 'alice@example.com' 
+    });
+
+    // Retrieve data
+    const user = await client.get('user:1');
+    console.log('User:', user);
+
+    // Vector search (AI embeddings)
+    const embedding = Array.from({ length: 384 }, () => Math.random());
+    await client.vectorSet('embedding:1', embedding, { 
+      model: 'gpt-3.5',
+      text: 'Hello world' 
+    });
+
+    const results = await client.vectorSearch(embedding, 10);
+    console.log('Search results:', results);
+
+    // Disconnect
+    await client.disconnect();
+  } catch (error) {
+    console.error('❌ Error:', error);
+  }
+}
+
+main();
+```
+
+### 4. Run Tests
 
 ```bash
-# Create data directory
-mkdir -p /data/snaildb
+# Start server in one terminal
+npm run dev
 
-# Set permissions
-chmod 755 /data/snaildb
-
-# Run server
-NODE_ENV=production npm run server:prod
+# Run tests in another terminal
+npm test              # Jest tests
+npm run test:watch   # Watch mode
+npm run test:coverage # Coverage report
+npm run test:simple  # Simple integration test
 ```
-
-### Clustering
-
-```typescript
-// Master node
-const master = new SnailDBServer({
-  ...config,
-  replication: { enabled: true, role: 'master' },
-});
-
-// Slave node (connects to master)
-const slave = new SnailDBServer({
-  ...config,
-  replication: { enabled: true, role: 'slave' },
-});
-```
-
-## Security
-
-### Authentication
-
-```typescript
-// Server with password
-npm run server -- --password mysecurepass
-
-// Client authentication
-const client = new SnailDBClient({
-  uri: 'snaildb://user:password@localhost:12222',
-});
-```
-
-### Best Practices
-
-1. **Use strong passwords** - Generate with `openssl rand -base64 32`
-2. **Enable TLS** - Configure with reverse proxy (nginx)
-3. **Network isolation** - Run in private network/VPC
-4. **Rate limiting** - Implement per-user quotas
-5. **Input validation** - Validate all data
-
-## Troubleshooting
-
-### Connection Refused
-
-```typescript
-// Check if server is running
-curl http://localhost:12222
-// Error: Expected 'snaildb://' protocol, got HTTP
-```
-
-### Memory Pressure
-
-```typescript
-// Reduce maxMemory or increase threshold
-npm run server -- --maxmemory 1073741824  // 1GB
-```
-
-### Vector Dimension Mismatch
-
-```typescript
-// Ensure vector dimension matches configuration
-const dim = 768; // Match server config
-const vector = new Array(dim).fill(0);
-await client.vectorSet('key', vector);
-```
-
-## Contributing
-
-Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md)
-
-## License
-
-MIT - See [LICENSE](LICENSE)
-
-## Roadmap
-
-- [ ] Redis-compatible mode
-- [ ] GraphQL API
-- [ ] Distributed SQL queries
-- [ ] GPU acceleration for vector search
-- [ ] Kafka stream integration
-- [ ] Time-series data support
-- [ ] Machine learning model serving
-- [ ] WebSocket connections
-
-## Support
-
-- 📖 [Documentation](./docs/)
-- 💬 [GitHub Discussions](https://github.com/snaildb/snaildb/discussions)
-- 🐛 [Issue Tracker](https://github.com/snaildb/snaildb/issues)
-- 📧 [contact@snaildb.dev](mailto:contact@snaildb.dev)
 
 ---
 
-**Built with ❤️ for AI/LLM applications**
+## Installation
 
-Version 2.0.0 | TypeScript | Node.js 18+ | Production Ready
+For detailed installation instructions including Docker, Kubernetes, and cloud deployment, see **[INSTALLATION.md](./INSTALLATION.md)**
+
+Key methods:
+- ✅ From source (development)
+- ✅ npm package (when published)
+- ✅ Docker (recommended for production)
+- ✅ Kubernetes (enterprise deployments)
+- ✅ Bare metal / VM (on-premises)
+
+---
+
+## Real-World Use Cases
+
+### 1. LLM Context & Memory
+```typescript
+// Store and retrieve conversation context
+await db.set(`context:${sessionId}`, {
+  messages: [...],
+  metadata: { model: 'gpt-4', tokens: 1250 }
+});
+```
+
+### 2. Semantic Search & RAG
+```typescript
+// Index documents and search by semantic similarity
+const embedding = await model.embed(document);
+await db.vectorSet(`doc:${id}`, embedding, { text: doc });
+const similar = await db.vectorSearch(queryEmbedding, 10);
+```
+
+### 3. Session Management
+```typescript
+// Track user sessions with metadata
+await db.hset(`session:${id}`, 'user_id', userId, 'token', token);
+```
+
+### 4. Prompt Caching
+```typescript
+// Cache LLM responses to reduce API calls
+await db.set(`cache:${hash}`, response, 86400); // 24h TTL
+```
+
+### 5. Rate Limiting
+```typescript
+// Implement per-user rate limiting
+const count = await db.incr(`rate:${userId}`);
+if (count > limit) throw new Error('Rate limited');
+```
+
+For more examples, see **[EXAMPLES.md](./EXAMPLES.md)**
+
+---
+
+## Production Ready
+
+### Security Checklist
+
+- ✅ **Authentication** - Optional password protection
+- ✅ **Encryption** - TLS ready (with reverse proxy)
+- ✅ **Rate limiting** - Configurable per user/endpoint
+- ✅ **Input validation** - All commands sanitized
+- ✅ **Error handling** - Comprehensive error classes
+- ✅ **Audit logging** - All operations logged
+- ✅ **Recovery** - WAL-based crash recovery
+- ✅ **Testing** - 14 comprehensive Jest tests
+- ✅ **Monitoring** - Real-time metrics export
+
+### Performance Metrics
+
+| Operation | Throughput | Latency |
+|-----------|-----------|---------|
+| SET | 40,000+ ops/sec | <1ms |
+| GET | 60,000+ ops/sec | <1ms |
+| DEL | 35,000+ ops/sec | <1ms |
+| Vector Search | 10,000+ queries/sec | 5-50ms |
+| Batch (100 ops) | 5,000+ batches/sec | 10-20ms |
+
+### Deployment Options
+
+- **Docker** - Single container, all-in-one
+- **Docker Compose** - Full stack with monitoring
+- **Kubernetes** - Enterprise-grade orchestration
+- **VM/Bare Metal** - Direct Node.js deployment
+- **Cloud** - AWS, GCP, Azure compatible
+
+---
+
+## Documentation
+
+| Document | Purpose |
+|----------|---------|
+| **[QUICKSTART.md](./QUICKSTART.md)** | 5-minute quick start guide |
+| **[INSTALLATION.md](./INSTALLATION.md)** | Installation & deployment methods |
+| **[API.md](./API.md)** | Complete API reference |
+| **[FEATURES.md](./FEATURES.md)** | Feature matrix & capabilities |
+| **[EXAMPLES.md](./EXAMPLES.md)** | Real-world usage examples |
+| **[SECURITY.md](./SECURITY.md)** | Security best practices |
+| **[ARCHITECTURE.md](./ARCHITECTURE.md)** | Technical architecture |
+| **[DEPLOYMENT.md](./DEPLOYMENT.md)** | Production deployment guide |
+| **[CONTRIBUTING.md](./CONTRIBUTING.md)** | Contribution guidelines |
+| **[PROJECT_STATUS.md](./PROJECT_STATUS.md)** | Project status & roadmap |
+
+---
+
+## Support & Community
+
+### Ecocee Support
+
+For enterprise support, training, and custom development:
+- 🌐 **Website**: [ecocee.in](https://ecocee.in)
+- 📧 **Email**: contact@ecocee.in
+- 💼 **LinkedIn**: [Ecocee](https://linkedin.com/company/ecocee)
+
+### Open Source Community
+
+- ⭐ **Star** the [GitHub repo](https://github.com/ecocee/snaildb)
+- 🔗 **Fork** for development
+- 📝 **Contribute** - See [CONTRIBUTING.md](CONTRIBUTING.md)
+- 💡 **Suggest features** - Open discussions
+- 🐛 **Report bugs** - [GitHub Issues](https://github.com/ecocee/snaildb/issues)
+
+### Getting Help
+
+- 📖 **Docs** - [Full documentation](./docs/)
+- 💬 **Discussions** - [GitHub Discussions](https://github.com/ecocee/snaildb/discussions)
+- 🐛 **Issues** - [Report bugs](https://github.com/ecocee/snaildb/issues)
+- 📧 **Email** - contact@ecocee.in
+
+---
+
+## Contributing
+
+We welcome contributions! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for:
+- Development setup
+- Code standards
+- Pull request process
+- Testing requirements
+
+---
+
+## License
+
+**MIT License** - See [LICENSE](LICENSE) file for details
+
+Copyright (c) 2025 Ecocee
+
+---
+
+## Roadmap
+
+### v2.1 (Q1 2025)
+- [ ] Redis-compatible protocol mode
+- [ ] GraphQL API
+- [ ] Enhanced replication
+
+### v2.2 (Q2 2025)
+- [ ] Distributed SQL queries
+- [ ] GPU acceleration for vector search
+- [ ] Time-series optimizations
+
+### v3.0 (Q3 2025)
+- [ ] Kafka stream integration
+- [ ] Machine learning model serving
+- [ ] Distributed clustering
+
+---
+
+## Tech Stack
+
+- **Language** - TypeScript 5.3+
+- **Runtime** - Node.js 18+
+- **Storage** - In-memory with RDB/WAL
+- **Vector Index** - HNSW
+- **Testing** - Jest
+- **Deployment** - Docker, Kubernetes
+- **Monitoring** - Prometheus-compatible
+
+---
+
+## Comparison
+
+```
+                      SNAILDB  Redis  Milvus  Pinecone
+─────────────────────────────────────────────────────
+Vector Search           ✅      ❌     ✅      ✅
+Self-Hosted            ✅      ✅     ✅      ❌
+Simple Deploy          ✅      ✅     ❌      N/A
+TypeScript Native      ✅      ❌     ❌      ❌
+No External Deps       ✅      ✅     ❌      N/A
+Open Source            ✅      ✅     ✅      ❌
+AI/LLM Optimized       ✅      ❌     ✅      ✅
+─────────────────────────────────────────────────────
+```
+
+---
+
+## Acknowledgments
+
+- HNSW algorithm - Yu. A. Malkov and D. A. Yashunin
+- Inspired by Redis, Milvus, and Weaviate
+- Built with TypeScript and Node.js communities
+
+---
+
+## Contact
+
+- **Website** - [ecocee.in](https://ecocee.in)
+- **Email** - contact@ecocee.in
+- **GitHub** - [@ecocee](https://github.com/ecocee)
+- **LinkedIn** - [Ecocee](https://linkedin.com/company/ecocee)
+
+---
+
+**Built with ❤️ for AI/LLM applications by Ecocee**
+
+Made in 🇮🇳 | Open Source | Production Ready | Self-Hosted
+
+Version 2.0.0 | TypeScript | Node.js 18+ | MIT License
+
+Last Updated: November 28, 2025

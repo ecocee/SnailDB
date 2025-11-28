@@ -289,27 +289,42 @@ export class SnailDBClient {
     this.messageBuffer = Buffer.concat([this.messageBuffer, data]);
 
     while (this.messageBuffer.length > 0) {
-      const decoded = SnailDBMessageCodec.decode(this.messageBuffer);
-      if (!decoded) {
+      try {
+        const decoded = SnailDBMessageCodec.decode(this.messageBuffer);
+        if (!decoded) {
+          break;
+        }
+
+        this.handleMessage(decoded.message);
+        this.messageBuffer = decoded.remaining;
+      } catch (error) {
+        console.error('Error decoding message:', error);
+        // Clear buffer and disconnect on decode error
+        this.messageBuffer = Buffer.alloc(0);
+        this.socket?.destroy();
         break;
       }
-
-      this.handleMessage(decoded.message);
-      this.messageBuffer = decoded.remaining;
     }
   }
 
   private handleMessage(message: any): void {
-    const pendingResponse = this.pendingResponses.get(message.id);
+    // The server sends responses wrapped in a message with payload containing the actual response
+    const response = message.payload || message;
+    const pendingResponse = this.pendingResponses.get(response.id);
+    
     if (pendingResponse) {
       clearTimeout(pendingResponse.timeout);
-      this.pendingResponses.delete(message.id);
+      this.pendingResponses.delete(response.id);
 
-      if (message.success) {
-        pendingResponse.resolve(message.data);
-      } else {
-        const error = new Error(message.error?.message || 'Unknown error');
+      if (response.success === true) {
+        pendingResponse.resolve(response.data);
+      } else if (response.success === false) {
+        const errorMessage = response.error?.message || response.error || 'Unknown error';
+        const error = new Error(errorMessage);
         pendingResponse.reject(error);
+      } else {
+        // Handle case where success is undefined
+        pendingResponse.resolve(response.data);
       }
     }
   }

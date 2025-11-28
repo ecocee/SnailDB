@@ -13,6 +13,10 @@
     "dev": "ts-node cmd/server/index.ts",
     "server": "ts-node cmd/server/index.ts",
     "server:prod": "node dist/cmd/server/index.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:simple": "npx ts-node test.ts",
     "lint": "eslint src/**/*.ts cmd/**/*.ts --max-warnings 0",
     "lint:fix": "eslint src/**/*.ts cmd/**/*.ts --fix",
     "format": "prettier --write \"src/**/*.ts\" \"cmd/**/*.ts\"",
@@ -38,13 +42,16 @@
   "author": "SNAILDB Team",
   "license": "MIT",
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/node": "^20.10.0",
     "@types/uuid": "^9.0.2",
     "@typescript-eslint/eslint-plugin": "^6.13.0",
     "@typescript-eslint/parser": "^6.13.0",
     "eslint": "^8.54.0",
+    "jest": "^30.2.0",
     "prettier": "^3.1.0",
     "rimraf": "^5.0.5",
+    "ts-jest": "^29.4.5",
     "typescript": "^5.3.3"
   },
   "dependencies": {
