@@ -43,7 +43,7 @@ We blend research, innovation, and practical engineering to deliver **reliable, 
 ### Resources
 - **Website**: [ecocee.in](https://ecocee.in)
 - **GitHub**: [github.com/ecocee/snaildb](https://github.com/ecocee/snaildb)
-- **Email**: contact@ecocee.in
+- **Email**: info@ecocee.in
 
 ---
 
