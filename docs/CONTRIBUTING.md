@@ -41,11 +41,11 @@ Thank you for your interest in contributing to SNAILDB! This document provides g
 # (https://github.com/sreeraj/snaildb)
 
 # 2. Clone your fork
-git clone https://github.com/YOUR_USERNAME/snaildb.git
+git clone https://github.com/ecocee/snaildb.git
 cd snaildb
 
 # 3. Add upstream remote
-git remote add upstream https://github.com/sreeraj/snaildb.git
+git remote add upstream https://github.com/ecocee/snaildb.git
 
 # 4. Install dependencies
 npm install
